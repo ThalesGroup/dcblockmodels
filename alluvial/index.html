@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Class Transitions</title>
+
+<link rel="stylesheet" type="text/css" href="index.css">
+<link rel="icon" type="image/png" href="./images/favicon.png" />
+
+<body>
+
+
+<div id="head" class="head">
+
+    <div id="hideButton">
+        <button type="button"
+                onClick="hideShowSankeySettings(this);"
+                id="hideSettingsButton" value="shown">
+            Hide Sankey settings
+        </button>
+    </div>
+    
+    <div class="titleContainer" id="title">
+        <b>Clusters of entry stations over time</b>
+    </div>
+    
+
+    <div id="selectSankeyOptions">
+        <p>Select Sankey options : </p>
+        <div id="nodeWidthSelect">
+            <div id="nodeWidthText">node width = </div>   
+            <input type="range" class="sankeyRange" id="sankeyNodeWidth" name="nodeWidth"
+                    min="0" max="100" onchange="updateSankeyNodeWidth(this.value);">
+        </div>
+        <div id="nodePaddingSelect">
+            <div id="nodePaddingText">node padding = </div>   
+            <input type="range" class="sankeyRange" id="sankeyPadding" name="nodePadding"
+                    min="0" max="100" onchange="updateSankeyNodePadding(this.value);">
+        </div>
+        <div id="widthSelect">
+            <div id="widthText">width = </div>   
+            <input type="range" class="sankeyRange" id="sankeyWidth" name="width"
+                    min="0" max="1000" step="5"
+                    onchange="updateSankeyWidth(this.value);">
+        </div>
+        <div id="heightSelect">
+            <div id="heightText">height = </div>   
+            <input type="range" class="sankeyRange" id="sankeyHeight" name="height"
+                    min="0" max="500" step="5"
+                    onchange="updateSankeyHeight(this.value);">
+        </div>
+        <div id="ticksFontSizeSelect">
+            <div id="ticksFontSizeText">tick font size = </div>   
+            <input type="range" class="sankeyRange" id="sankeyTickFs" name="ticksFs"
+                    min="0" max="100" onchange="updateTickFs(this.value);">
+        </div>
+
+    </div>
+    <div id="selectStationOptions">
+        <div id="selectStationOptionsStat" class="selector">
+            <label for="selectStation"><em>Select Station</em></label>
+        </div>
+        <div id="selectStationOptionsLine" class="selector">
+            <label for="selectLine"><em>Or select Line</em></label>
+        </div>
+        <div class="selector">
+            <!--<button type="button"
+                    onClick="selectMode(this.value);"
+                    id="selectModeButton" value="entry">
+                Show exit stations clusters
+            </button>
+            -->
+            <label for="selectMode"><em>Select analysis mode:</em></label>
+            <select name="modes" id="selectMode" onClick="selectMode(this.value);">
+                <option value="entry">entry</option>
+                <option value="exit">exit</option>
+                <option value="block">block</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+
+<div id="sankeyDiagram" class="sankeyContainer"></div>
+
+<div id="details" class="stationDetails"></div>
+
+
+<div id="routemapSelector">
+    <div id="routemapSelect">
+        <div id="routemapTimestepRangeText"></div>
+        <input type="range" id="routemapTimestepRange" min="0" max="100" value="0">
+    </div>
+    
+    <div id="selectCluster">
+        <div id="selectClusterTxt">
+            <em>Select entry cluster&nbsp&nbsp</em>
+        </div>
+    </div>
+
+    <div id="fullGammaButton">
+        <button type="button"
+                id="showFullGammaButton" value="show">
+            Show full cluster interactions
+        </button>
+    </div>
+</div>
+
+<div class="routemapTitle">
+    <b>Clusters of entry stations</b>
+</div>
+
+<div class="routemapTitle">
+    <b>Clusters of exit stations</b>
+</div>
+
+<div id="entryRoutemapContainer" class="routemapContainer">
+    <img src="./images/routemap_entries_0_None.jpg" id="entryRoutemapImage" class="routemapImage">
+</div>
+
+<div id="gamma" class="gamma">
+    <img src="./images/gamma_None.jpg" id="gammaImage">
+</div>
+
+<div id="exitRoutemapContainer" class="routemapContainer">
+    <img src="./images/routemap_exits_0_None.jpg" id="exitRoutemapImage" class="routemapImage">
+</div>
+
+
+<script src="d3.js"></script>
+<script src="d3-sankey.js"></script>
+<!-- <script src="script.js"></script> -->
+<script src="alluvial_dashboard.js"></script>
+
+</body>
