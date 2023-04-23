@@ -17,7 +17,7 @@ interactive = [
     'prince',  # for Correspondence Analysis
     'nltk'  # for notebook of text processing
 ]
-metrics = ['sparsebm']  # for Co-clustering ARI (CARI)
+metrics = ['sparsebm==1.3']  # for Co-clustering ARI (CARI) only
 tests = ['pytest', 'jinja2<3.1']
 
 if (sys.version_info.major, sys.version_info.minor) != (3, 7):
