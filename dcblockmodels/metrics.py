@@ -138,6 +138,19 @@ def always_absent_nodes(ZW):
     return np.where((ZW == -1).all(axis=0))[0]
 
 
+def get_flat_present_nodes(ZW, absent_rowcol_nodes):
+    """
+    returns a flat partition without without absent nodes
+    """
+    T, ND = ZW.shape
+    return np.array([
+        ZW[t, ij]
+        for t in range(T)
+        for ij in range(ND)
+        if (t, ij) not in absent_rowcol_nodes
+    ])
+
+
 def cmat_clustering(cmat):
     """
     input : np.array shape (n,n) : a confusion matrix
