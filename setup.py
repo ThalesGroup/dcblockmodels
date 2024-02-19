@@ -18,7 +18,7 @@ interactive = [
     'nltk'  # for notebook of text processing
 ]
 metrics = ['sparsebm==1.3']  # for Co-clustering ARI (CARI) only
-tests = ['pytest', 'jinja2<3.1']
+tests = ['pytest', 'jinja2==3.1.3']
 
 if (sys.version_info.major, sys.version_info.minor) != (3, 7):
     warnings.warn(
